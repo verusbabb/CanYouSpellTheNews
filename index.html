@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <!-- fun title -->
+    <title>Spell the News</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+
+  </head>
+    <body>
+        <div class="wrapper">
+            <div class="container" id="swapableDivs">
+                <div class="mainDivs" id="gameStart">
+                    <h1>Can you correctly spell words we have seen in a the news lately?</h1>
+                    <p>In this challenge you need to know the news tidbit and spell it correctly.  It is a race against the clock.  Correct answers builds your score.  Wrong answers take extra time off the clock. Good luck!></p>
+                    <div>
+                        <button class="btns" ID="startUp" type="button">Click to Start!</button>
+                    </div>
+                </div>
+                <div class="mainDivs" id="Q&A">
+                    <h1> <span ID="theQuestion">The question will go here</span></h1>
+                    <div class="possAnswers">
+                        <div>
+                            <ul class="choices">
+                                <li><button class="btns" type="radio"><span id="answer1">First possible answer will show here</span></button></li>
+                                <li><button class="btns" type="radio"><span id="answer2">Second possible answer will show here</span></button></li>
+                                <li><button class="btns" type="radio"><span id="answer3">Third possible answer will show here</span></button></li>
+                                <li><button class="btns" type="radio"><span id="answer4">Fourth possible answer will show here</span></button></li>
+                            </ul>
+                        </div>
+                        <p><span id="validate">Correct or Incorrect</span></p>
+                    </div>
+                </div>
+
+                <div class="mainDivs" id="gameOver">
+                    <h1 class="Leaders">Game Over!</h1>
+                    <p class="userScore" <span class="userscore#">Their score goes here</span></p>
+                    <form class="userInfo">
+                        <label for="initials">Enter your initials:</label>
+                        <input type="text" id="userInitials">
+                    </form>
+                    <div>
+                        <button type="button" class="btns" id="postScore">Post score</button>
+                    </div>
+                </div>
+
+
+                <div class="mainDivs" id="leaderBoard">
+                    <h1 class="currentLeaders">The current leaders</h1>
+                        <div>   
+                            <ol class="leaders">
+                                <li><span id="leader1">First possible answer will show here</span></li>
+                                <li><span id="leader2">First possible answer will show here</span></li>
+                                <li><span id="leader3">First possible answer will show here</span></li>
+                                <li><span id="leader4">First possible answer will show here</span></li>
+                                <li><span id="leader5">First possible answer will show here</span></li>
+                            </ol>
+                        </div>
+                        <div>
+                            <button type="button" class="btns" id="startOver">Play Again</button>
+                        </div>
+                </div>
+                    
+        
+            </div>
+        </div>
+    </body>
+        
+    
+</html>
