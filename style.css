@@ -1,47 +1,7 @@
 
 
 
-
-.choices {
-    list-style-type: none;
-   }
-
-h1 {
-    font-size: 65;
-    color: blue;
+#gameOver button {
+    display: block;
+    margin-top: 15px;
 }
-
-.userInfo {
-    padding-bottom: 15px;
-}
-
-/* p {
-    text-align: center;
-}
-
-ul {
-    text-align: center;
-}
-
-button {
-    align-items: center;
-}
-
-.centerBTN {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.userInfo {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.mainDivs {
-    padding-bottom: 20px;
-}
- */

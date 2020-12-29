@@ -11,12 +11,22 @@
     <script src="script.js"></script>
 
   </head>
+
+  <header>
+      <div id="linkToLeaders">
+          <p id="leaderBoardLink"><span>Leaderboard</span></p>
+      </div>
+
+      <div id="countDown">
+          <p class= "timeLeft" id="timer">Timer</p>
+      </div>
+  </header>
     <body>
         <div class="wrapper">
             <div class="container" id="swapableDivs">
                 <div class="mainDivs" id="gameStart">
                     <h1>Can you correctly spell words we have seen in a the news lately?</h1>
-                    <p>In this challenge you need to know the news tidbit and spell it correctly.  It is a race against the clock.  Correct answers builds your score.  Wrong answers take extra time off the clock. Good luck!></p>
+                    <p>In this challenge you need to know the news tidbit and spell it correctly.  It is a race against the clock.  Correct answers builds your score.  Wrong answers take extra time off the clock. Good luck!</p>
                     <div>
                         <button class="btns" ID="startUp" type="button">Click to Start!</button>
                     </div>
@@ -25,12 +35,12 @@
                     <h1> <span ID="theQuestion">The question will go here</span></h1>
                     <div class="possAnswers">
                         <div>
-                            <ul class="choices">
+                            <ol class="choices">
                                 <li><button class="btns" type="radio"><span id="answer1">First possible answer will show here</span></button></li>
                                 <li><button class="btns" type="radio"><span id="answer2">Second possible answer will show here</span></button></li>
                                 <li><button class="btns" type="radio"><span id="answer3">Third possible answer will show here</span></button></li>
                                 <li><button class="btns" type="radio"><span id="answer4">Fourth possible answer will show here</span></button></li>
-                            </ul>
+                            </ol>
                         </div>
                         <p><span id="validate">Correct or Incorrect</span></p>
                     </div>
@@ -39,10 +49,12 @@
                 <div class="mainDivs" id="gameOver">
                     <h1 class="Leaders">Game Over!</h1>
                     <p class="userScore" <span class="userscore#">Their score goes here</span></p>
+                    
                     <form class="userInfo">
                         <label for="initials">Enter your initials:</label>
                         <input type="text" id="userInitials">
                     </form>
+            
                     <div>
                         <button type="button" class="btns" id="postScore">Post score</button>
                     </div>
