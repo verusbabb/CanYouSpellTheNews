@@ -5,3 +5,12 @@
     display: block;
     margin-top: 15px;
 }
+
+.hideDiv {
+    display: none;
+}
+
+.showDiv {
+    display: inline;
+}
+
