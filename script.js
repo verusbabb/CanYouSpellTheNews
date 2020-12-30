@@ -4,19 +4,37 @@ var beginGame = document.querySelector("#gameStart");
 var showQuestion = document.querySelector("#questionSession");
 var endGame = document.querySelector("#gameOver");
 var leaderBoard = document.querySelector("#leaderBoard");
-var oneAnswer = document.querySelector("#answer1");
-var twoAnswer = document.querySelector("#answer2");
-var threeAnswer = document.querySelector("#answer3");
-var fourAnswer = document.querySelector("#answer4");
+var oneAnswer = document.querySelector("#choicesOne");
+var twoAnswer = document.querySelector("#choicesTwo");
+var threeAnswer = document.querySelector("#choicesThree");
+var fourAnswer = document.querySelector("#choicesFour");
 var question = document.querySelector("#theQuestion");
+var buttonOne = document.querySelector("#button1");
+var buttonTwo = document.querySelector("#button2");
+var buttonThree = document.querySelector("#button3");
+var buttonFour  = document.querySelector("#button4");
+var trueFalse = document.querySelector("#validate");
 
-var QandA1 = {
-    question1: "Who is the head doc at the CDC?",
-    possAnswer1: "Dr. Fauci",
-    possAnswer2: "Dr. Fauchi",
-    possAnswer3: "Dr. Burchhead",
-    possAnswer4: "Dr. Burckhead",    
+// var QandA = {
+//     question1: "Who is the Director of the National Institute of Allergy and Infectious Diseases?", [
+//             possAnswer1: "Dr. Anthony Fauci",
+//             possAnswer2: "Dr. Debra Berx",
+//             possAnswer3: "Dr. Anthony Fauchi",
+//             possAnswer4: "Dr. Debra Birx",
+//     ]
+//     }
+
+var QandA = {
+    bigQuestion: ["Who is the Director of the National Institute of Allergy and Infectious Diseases?", "Which of the following is a city in China?", "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?", "Who is Joe Biden's Vice President (elect)", "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?", "She is married to Kanye West..."],
+    answerSet1: ["Dr.Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
+    answerSet2: ["Woohan", "Beijhing", "Shanghai", "Boston"],
+    answerSet3: ["Moderna", "Phfizer", "Pfizer", "Modderna"],
+    answerSet4: ["Kamala Harris", "Camala Harris", "Kammala Harris", "Kamala Haris"],
+    answerSet5: ["CDC", "THC", "TBD", "CBD"],
+    answerSet6: ["Kim Jon-un", "Cloe Kardashian", "Kim Kardashian", "Cloey Kardashian"],
+    correctAnswer: ["Dr. Anthony Fauci", "Shanghai", "Pfizer", "Kamala Harris", "CBD", "Kim Kardashian"]
 }
+
 
 window.onload = function() {
     beginGame.setAttribute("class", "showDiv");
@@ -25,13 +43,48 @@ window.onload = function() {
     leaderBoard.setAttribute("class", "hideDiv");
 }
 
+
+
 startBtn.addEventListener("click", function() {
     beginGame.setAttribute("class", "hideDiv");
     showQuestion.setAttribute("class", "showDiv");
 
-    question.textContent = QandA1.question1;
-    oneAnswer.textContent = QandA1.possAnswer1;
-    twoAnswer.textContent = QandA1.possAnswer2;
-    threeAnswer.textContent = QandA1.possAnswer3;
-    fourAnswer.textContent = QandA1.possAnswer4;
-});
+    question.textContent = QandA.bigQuestion[0];
+    oneAnswer.textContent = QandA.answerSet1[0];
+    twoAnswer.textContent = QandA.answerSet1[1];
+    threeAnswer.textContent = QandA.answerSet1[2];
+    fourAnswer.textContent = QandA.answerSet1[3];
+
+    if (buttonOne.addEventListener("click", function() {
+            trueFalse.textContent = "Wrong Answer"
+        }));
+    
+    else if (buttonTwo.addEventListener("click", function() {   
+            trueFalse.textContent = "WRONG answer!"
+        }));
+
+    else if (buttonThree.addEventListener("click", function() {
+            trueFalse.textContent = "You are CORRECT!"
+         }));
+
+    else if (buttonFour.addEventListener("click", function() {  
+        trueFalse.textContent = "WRONG answer!"
+        }));
+    })
+
+
+
+
+// buttonOne.addEventListener("click", function() {
+//     if (buttonOne !== false) {
+//         trueFalse.textContent = "You are CORRECT!";
+//     }
+//         else {
+//             trueFalse.textContent = "WRONG answer";
+//         }
+
+//     });
+
+
+
+
