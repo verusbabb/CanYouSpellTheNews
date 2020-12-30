@@ -16,7 +16,6 @@ var buttonFour  = document.querySelector("#button4");
 var trueFalse = document.querySelector("#validate");
 var yourScore = document.querySelector("#yourScore");
 var score = 0;
-var tellScore = "";
 
 
 var QandA = {
@@ -36,11 +35,13 @@ window.onload = function() {
     showQuestion.setAttribute("class", "hideDiv");
     endGame.setAttribute("class", "hideDiv");
     leaderBoard.setAttribute("class", "hideDiv");
+    
+    console.log(score);
 }
 
 
 startBtn.addEventListener("click", function() {
-    var score = 0;
+    // var score = 0;
     beginGame.setAttribute("class", "hideDiv");
     showQuestion.setAttribute("class", "showDiv");
 
@@ -55,25 +56,28 @@ startBtn.addEventListener("click", function() {
             yourScore.textContent = ("Your current score is " + score + ".");
         }));
     
-    else if (buttonTwo.addEventListener("click", function() {   
+    if (buttonTwo.addEventListener("click", function() {   
             trueFalse.textContent = "WRONG answer!"
             yourScore.textContent = ("Your current score is " + score + ".");
         }));
 
-    else if (buttonThree.addEventListener("click", function() {
+    if (buttonThree.addEventListener("click", function() {
             score++;
             trueFalse.textContent = "You are CORRECT!";
             yourScore.textContent = ("Your current score is " + score + ".");
+            console.log(score);
          }));
 
-    else if (buttonFour.addEventListener("click", function() {  
+    if (buttonFour.addEventListener("click", function() {  
             trueFalse.textContent = "WRONG answer!"
             yourScore.textContent = ("Your current score is " + score + ".");
         }));
 
     
-
     })
+
+
+    
 
 
 
