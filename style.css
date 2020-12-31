@@ -1,10 +1,8 @@
 
-
-
-#gameOver button {
-    display: block;
-    margin-top: 15px;
+h1 {
+    text-align: center;
 }
+
 
 .hideDiv {
     display: none;

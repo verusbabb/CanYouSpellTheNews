@@ -116,8 +116,13 @@ startBtn.addEventListener("click", function() {
         leaderBoard.setAttribute("class", "hideDiv");
 
         postScoreBtn.addEventListener("click", function() {
-        localStorage.setItem("gamerInitials", userInitials.value);
+        localStorage.setItem("gamerInitials", (userInitials.value));
         console.log(userInitials.value);
+    
+        theLeader1.textContent = (gamerInitials + ": " + score + " correct");
+
+        
+
         goToLeaderBoard();
         });
     }
