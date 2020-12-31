@@ -15,6 +15,15 @@ var buttonThree = document.querySelector("#button3");
 var buttonFour  = document.querySelector("#button4");
 var trueFalse = document.querySelector("#validate");
 var yourScore = document.querySelector("#yourScore");
+var theLeader1 = document.querySelector("#leader1");
+var theLeader2 = document.querySelector("#leader2");
+var theLeader3 = document.querySelector("#leader3");
+var theLeader4 = document.querySelector("#leader4");
+var theLeader5 = document.querySelector("#leader5");
+var postScoreBtn = document.querySelector("#postScore");
+
+var gamerInitials = localStorage.getItem("gamerInitials");
+
 var score = 0;
 
 
@@ -36,7 +45,6 @@ window.onload = function() {
     endGame.setAttribute("class", "hideDiv");
     leaderBoard.setAttribute("class", "hideDiv");
     
-    console.log(score);
 }
 
 
@@ -52,29 +60,67 @@ startBtn.addEventListener("click", function() {
     fourAnswer.textContent = QandA.answerSet1[3];
 
     if (buttonOne.addEventListener("click", function() {
-            trueFalse.textContent = "Wrong Answer"
+            trueFalse.textContent = "Wrong Answer";
             yourScore.textContent = ("Your current score is " + score + ".");
+            countdown();
         }));
     
     if (buttonTwo.addEventListener("click", function() {   
-            trueFalse.textContent = "WRONG answer!"
+            trueFalse.textContent = "WRONG answer!";
             yourScore.textContent = ("Your current score is " + score + ".");
+            countdown();
         }));
 
     if (buttonThree.addEventListener("click", function() {
             score++;
             trueFalse.textContent = "You are CORRECT!";
             yourScore.textContent = ("Your current score is " + score + ".");
-            console.log(score);
+            countdown();
          }));
 
     if (buttonFour.addEventListener("click", function() {  
             trueFalse.textContent = "WRONG answer!"
             yourScore.textContent = ("Your current score is " + score + ".");
+            countdown();
         }));
 
-    
     })
+
+    var countdown = function() {
+      var timeLeft = 1;
+        var interval = setInterval(function() {
+         if (timeLeft > 0) {
+             timeLeft--;
+         }
+             else {
+             clearInterval(interval);
+            goToGameOver();
+          }
+        }, 1000);
+      }
+
+    var goToLeaderBoard = function() {
+        beginGame.setAttribute("class", "hideDiv");
+        showQuestion.setAttribute("class", "hideDiv");
+        endGame.setAttribute("class", "hideDiv");
+        leaderBoard.setAttribute("class", "showDiv");
+
+
+
+    }
+
+    var goToGameOver = function() {
+        beginGame.setAttribute("class", "hideDiv");
+        showQuestion.setAttribute("class", "hideDiv");
+        endGame.setAttribute("class", "showDiv");
+        leaderBoard.setAttribute("class", "hideDiv");
+
+        postScoreBtn.addEventListener("click", function() {
+        localStorage.setItem("gamerInitials", userInitials.value);
+        console.log(userInitials.value);
+        goToLeaderBoard();
+        });
+    }
 
 
     
