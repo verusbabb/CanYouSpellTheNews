@@ -1,8 +1,11 @@
 
+var body = document.body;
+
 var startBtn = document.querySelector("#startUp");
 var beginGame = document.querySelector("#gameStart");
 var showQuestion = document.querySelector("#questionSession");
 var endGame = document.querySelector("#gameOver");
+
 var leaderBoard = document.querySelector("#leaderBoard");
 var oneAnswer = document.querySelector("#choicesOne");
 var twoAnswer = document.querySelector("#choicesTwo");
@@ -15,14 +18,25 @@ var buttonThree = document.querySelector("#button3");
 var buttonFour  = document.querySelector("#button4");
 var trueFalse = document.querySelector("#validate");
 var yourScore = document.querySelector("#yourScore");
-var theLeader1 = document.querySelector("#leader1");
-var theLeader2 = document.querySelector("#leader2");
-var theLeader3 = document.querySelector("#leader3");
-var theLeader4 = document.querySelector("#leader4");
-var theLeader5 = document.querySelector("#leader5");
-var postScoreBtn = document.querySelector("#postScore");
 
-var gamerInitials = localStorage.getItem("gamerInitials");
+
+//accessing GameOver div elements
+var userInitialsEl = document.querySelector("#userInitials");
+var postScoreBtn = document.querySelector("#postScore");
+var msgDiv = document.querySelector("#msg");
+var userInitials;
+
+//creating new GameOver div elements
+var h2Success = document.createElement("h2");
+var h2Fail = document.createElement("h2");
+
+//appending content in GameOver div
+h2Success.textContent = "Thank you!";
+h2Fail.textContent = "You must enter initials";
+h2Success.setAttribute("style", "color:black; font-size: 14px;");
+h2Fail.setAttribute("style", "color:black; font-size: 14px;");
+
+
 
 var score = 0;
 
@@ -86,6 +100,7 @@ startBtn.addEventListener("click", function() {
 
     })
 
+    //short time delay function to allow someone to see their final score before going to GameOver div
     var countdown = function() {
       var timeLeft = 1;
         var interval = setInterval(function() {
@@ -99,6 +114,7 @@ startBtn.addEventListener("click", function() {
         }, 1000);
       }
 
+    //Leaderboard div control
     var goToLeaderBoard = function() {
         beginGame.setAttribute("class", "hideDiv");
         showQuestion.setAttribute("class", "hideDiv");
@@ -109,22 +125,30 @@ startBtn.addEventListener("click", function() {
 
     }
 
+    //GameOver div control
     var goToGameOver = function() {
         beginGame.setAttribute("class", "hideDiv");
         showQuestion.setAttribute("class", "hideDiv");
         endGame.setAttribute("class", "showDiv");
         leaderBoard.setAttribute("class", "hideDiv");
 
-        postScoreBtn.addEventListener("click", function() {
-        localStorage.setItem("gamerInitials", (userInitials.value));
-        console.log(userInitials.value);
-    
-        theLeader1.textContent = (gamerInitials + ": " + score + " correct");
-
+        postScoreBtn.addEventListener("click", function(event) {
+            // event.preventDefault();
         
-
-        goToLeaderBoard();
-        });
+            userInitials = document.querySelector("#userInitials").value;
+        
+            if (userInitials === "") {
+            
+                msgDiv.appendChild(h2Fail);
+                
+            }
+              else {
+                    h2Fail.remove();
+                    msgDiv.appendChild(h2Success);
+                  }
+            
+            
+            });
     }
 
 

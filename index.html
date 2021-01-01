@@ -49,29 +49,23 @@
                 </div>
 
                 <div id="gameOver">
-                    <h1 id="Leaders">Game Over!</h1>
-                    <p id="userscore#">Their score goes here</span></p>
-                    
-                    <form class="userInfo">
-                        <label for="initials">Enter your initials:</label>
-                        <input type="text" id="userInitials">
+                    <h1 id="leaders">Game Over!</h1>
+                    <h2 id="yourScore"></h2>
+                
+                    <form class="userInfo" method="post">
+                      <label for="initials">Enter your initials:</label>
+                      <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
                     </form>
-            
-                    <div>
-                        <button type="button" id="postScore">Post score</button>
-                    </div>
-                </div>
+                    <div id="msg"></div>
+                    <button type="button" id="postScore">Post score</button>
+                  </div>
 
 
                 <div id="leaderBoard">
                     <h1 id="currentLeaders">The current leaders</h1>
                         <div>   
                             <ol class="leaders">
-                                <li><span id="leader1"></span></li>
-                                <li><span id="leader2"></span></li>
-                                <li><span id="leader3"></span></li>
-                                <li><span id="leader4"></span></li>
-                                <li><span id="leader5"></span></li>
+                                
                             </ol>
                         </div>
                         <div>
