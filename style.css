@@ -12,3 +12,23 @@ h1 {
     display: inline;
 }
 
+#msg {
+    visibility: hidden;
+    margin-top: 20px;
+    font-weight: 700;
+    height: 1.2em;
+    font-size: 1.2em;
+  }
+  
+  #msg.success,
+  #msg.error {
+    visibility: visible;
+  }
+  
+  #msg.success {
+    color: #52b155;
+  }
+  
+  #msg.error {
+    color: #e6252c;
+  }
