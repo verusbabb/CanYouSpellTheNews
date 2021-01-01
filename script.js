@@ -37,10 +37,11 @@ h2Success.setAttribute("style", "color:black; font-size: 14px;");
 h2Fail.setAttribute("style", "color:black; font-size: 14px;");
 
 
-
+//setting initial game score
 var score = 0;
 
 
+//object that contains six questions and six answer sets
 var QandA = {
     bigQuestion: ["Who is the Director of the National Institute of Allergy and Infectious Diseases?", "Which of the following is a city in China?", "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?", "Who is Joe Biden's Vice President (elect)", "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?", "She is married to Kanye West..."],
     answerSet1: ["Dr.Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
@@ -52,7 +53,7 @@ var QandA = {
     correctAnswer: ["Dr. Anthony Fauci", "Shanghai", "Pfizer", "Kamala Harris", "CBD", "Kim Kardashian"]
 }
 
-
+//ensures that the beginGame div is all that loads when page loads.
 window.onload = function() {
     beginGame.setAttribute("class", "showDiv");
     showQuestion.setAttribute("class", "hideDiv");
@@ -61,11 +62,18 @@ window.onload = function() {
     
 }
 
-
+//listening for game start, when button clicked, switches to showQuestions div
 startBtn.addEventListener("click", function() {
     // var score = 0;
+    
+    showQuestions();
+})
+    
+function showQuestions() {    
     beginGame.setAttribute("class", "hideDiv");
     showQuestion.setAttribute("class", "showDiv");
+    endGame.setAttribute("class", "hideDiv");
+    leaderBoard.setAttribute("class", "hideDiv");
 
     question.textContent = QandA.bigQuestion[0];
     oneAnswer.textContent = QandA.answerSet1[0];
@@ -98,7 +106,8 @@ startBtn.addEventListener("click", function() {
             countdown();
         }));
 
-    })
+}
+
 
     //short time delay function to allow someone to see their final score before going to GameOver div
     var countdown = function() {
@@ -115,18 +124,15 @@ startBtn.addEventListener("click", function() {
       }
 
     //Leaderboard div control
-    var goToLeaderBoard = function() {
+    function goToLeaderBoard() {
         beginGame.setAttribute("class", "hideDiv");
         showQuestion.setAttribute("class", "hideDiv");
         endGame.setAttribute("class", "hideDiv");
         leaderBoard.setAttribute("class", "showDiv");
-
-
-
     }
 
     //GameOver div control
-    var goToGameOver = function() {
+    function goToGameOver() {
         beginGame.setAttribute("class", "hideDiv");
         showQuestion.setAttribute("class", "hideDiv");
         endGame.setAttribute("class", "showDiv");
@@ -140,14 +146,14 @@ startBtn.addEventListener("click", function() {
             if (userInitials === "") {
             
                 msgDiv.appendChild(h2Fail);
-                
             }
               else {
                     h2Fail.remove();
                     msgDiv.appendChild(h2Success);
+
+                    goToLeaderBoard();
                   }
-            
-            
+        
             });
     }
 
