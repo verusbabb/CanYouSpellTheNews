@@ -37,10 +37,10 @@
                     <div id="possAnswers">
                         <div>
                             <ol id="choices">
-                                <li><button id=button1 type="radio"><span id="choicesOne">First possible answer will show here</span></button></li>
-                                <li><button id= button2 type="radio"><span id="choicesTwo">Second possible answer will show here</span></button></li>
-                                <li><button id= button3 type="radio"><span id="choicesThree">Third possible answer will show here</span></button></li>
-                                <li><button id = button4 type="radio"><span id="choicesFour">Fourth possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id=button1 type="radio"><span id="choicesOne">First possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id= button2 type="radio"><span id="choicesTwo">Second possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id= button3 type="radio"><span id="choicesThree">Third possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id = button4 type="radio"><span id="choicesFour">Fourth possible answer will show here</span></button></li>
                             </ol>
                         </div>
                         <p><span id="validate"></span></p>
@@ -49,7 +49,7 @@
                 </div>
 
                 <div id="gameOver">
-                    <h1 id="leaders">Game Over!</h1>
+                    <h1 id="gameOver">Game Over!</h1>
                     <h2 id="yourScore"></h2>
                 
                     <form class="userInfo" method="post">
@@ -64,9 +64,7 @@
                 <div id="leaderBoard">
                     <h1 id="currentLeaders">The current leaders</h1>
                         <div>   
-                            <ol class="leaders">
-                                
-                            </ol>
+                            <ol id="leaders"></ol>
                         </div>
                         <div>
                             <button type="button" id="startOver">Play Again</button>
