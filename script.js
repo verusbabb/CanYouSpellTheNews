@@ -8,8 +8,10 @@ var startBtn = document.querySelector("#startUp");
 // accessing questionSession div and elements within
 var showQuestionDiv = document.querySelector("#questionSession");
 var theQuestion = document.querySelector("#theQuestion");
-var potentialAnswers = document.querySelector("#answerSet");
+var potentialAnswers = document.querySelector(".answerSet");
 var validateAnswer = document.querySelector("#validate");
+var TimerDiv = document.querySelector("#theTimer");
+var timeRmaining = document.querySelector("#timeRemaining");
 
 //accessing gameOver div and elements
 var gameOverDiv= document.querySelector("#gameOver");
@@ -28,9 +30,10 @@ var startOverBtn = document.querySelector("#startOver");
 // Global variable declarations
 var userInitials;
 var allScores = []
-var timeLeft;
-var interval;
 var answer;
+var theirAnswer;
+var timeToPlay = 10;
+var timeSeconds = timeToPlay;
 
 //creating new GameOver div elements
 var h2Success = document.createElement("h2");
@@ -86,6 +89,8 @@ window.onload = function () {
     showQuestionDiv.setAttribute("class", "hideDiv");
     gameOverDiv.setAttribute("class", "hideDiv");
     leaderBoardDiv.setAttribute("class", "hideDiv");
+    TimerDiv.setAttribute("class", "hideDiv");
+    
 
     init();
 }
@@ -105,7 +110,7 @@ startBtn.addEventListener("click", function () {
     showQuestions();
 })
 
-
+//Begin showing questions
 function showQuestions() {
     // for (j=0; j < QandA.questions.length; j++) {
 
@@ -113,6 +118,7 @@ function showQuestions() {
         showQuestionDiv.setAttribute("class", "showDiv");
         gameOverDiv.setAttribute("class", "hideDiv");
         leaderBoardDiv.setAttribute("class", "hideDiv");
+        TimerDiv.setAttribute("class", "showDiv")
 
     //need to take time off clock in here and stop clock if run out of questions.
 
@@ -121,8 +127,10 @@ function showQuestions() {
     theQuestion.append(question);
 
     displayOptions();
+    // startTimer();
 }
 
+// For each question, display the possible answers
 function displayOptions() {
     for (i = 0; i < QandA.answers[i].length; i++) {
         answer = document.createElement("button");
@@ -133,26 +141,50 @@ function displayOptions() {
         var breakPoint = document.createElement("br");
         potentialAnswers.append(breakPoint);
     }
+
+    readAnswer();
 }
 
+//read their click/answer and validate correct or incorrect.
+function readAnswer() {
 potentialAnswers.onclick = function (event) {
-    var theirAnswer = event.target
+    potentialAnswers = event.target;
 
-    console.log(theirAnswer);
-    if (QandA.correct[i]) {
+    console.log(potentialAnswers);
+    console.log(QandA.correct[i]);
+    if (potentialAnswers !== QandA.correct[i].value) {
         var response = document.createElement("p");
         response.textContent = "Incorrect";
         validateAnswer.append(response);
-        yourScore.append("Your score is " + score);
+        // yourScore.append("Your score is " + score);
     }
     else {
         var response = document.createElement("p");
         response.textContent = "Correct";
         validateAnswer.append(response);
         score++
-        yourScore.append("Your score is " + score);
+        // yourScore.append("Your score is " + score);
     }
 }
+}
+
+// Timer function
+// function startTimer() {
+//     interval = setInterval(function() {
+//     if (timeToPlay > 0) {
+//         timeSeconds--;
+//         timeRemaining.textContent = timeSeconds;
+//     }
+//     else {
+//         timeRemaining.textContent = "0";
+//         // $(timeRemaining).text("0");
+//         // clearInterval(interval);
+//         clearInterval(interval);
+//         gameOver(score);
+//     }
+//     // return timeSeconds;
+//     }, 1000);
+// }
 
 // BEFORE RUNNING QUESTION LOOP, NEED TO CLEAR THE PREVIOUS QUESTION AND ANSWERS IN THE ONCLICK SECTION.
 

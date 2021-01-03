@@ -12,3 +12,7 @@ h1 {
 .showDiv {
     display: inline;
 }
+
+#timerCenter {
+    text-align: center;
+}

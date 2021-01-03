@@ -38,7 +38,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
         <a class="navbar-brand" href="index.html">
-            <h1>LeaderBoard</h1>
+            <h2>LeaderBoard</h2>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
             <!-- Question and answer section -->
             <div id="questionSession">
                 <div id="theQuestion"></div>
-                <ol id="answerSet"></ol>
+                <ol id="answerSet" class="answerSet" value="answerSet"></ol>
 
                 <!-- Validate whether answer is correct or incorrect -->
                 <p id="validate"></p>
@@ -103,6 +103,10 @@
                 <div>
                     <button type="button" id="startOver">Play Again</button>
                 </div>
+            </div>
+
+            <div id="theTimer">
+                <h2>Time remaining: <span id="timeRemaining" class = "timerCenter"></span></h2>
             </div>
         </section>
 </div>
