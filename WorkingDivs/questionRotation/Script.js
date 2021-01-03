@@ -154,6 +154,6 @@ potentialAnswers.onclick = function (event) {
     }
 }
 
-
+// BEFORE RUNNING QUESTION LOOP, NEED TO CLEAR THE PREVIOUS QUESTION AND ANSWERS IN THE ONCLICK SECTION.
 
 

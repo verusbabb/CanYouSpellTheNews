@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+    <!-- fun title -->
+    <title>Can You Spell The News?</title>
+    <link rel="stylesheet" href="style.css" />
+    
+
+  </head>
+
+  <header>
+      <div id="linkToLeaders">
+          <p id="leaderBoardLink"><span></span></p>
+      </div>
+
+      <div id="countDown">
+          <p class= "timeLeft" id="timer"></p>
+      </div>
+  </header>
+    <body>
+        <div class="wrapper">
+            <div id="swapableDivs">
+                <div id="gameStart">
+                    <h1>Can You Spell The News?</h1>
+                    <h2>Earn points by knowing the right answer (both true and spelled correctly)</h2>
+                    <h3>In this challenge you need to know the news tidbit AND spell it correctly.  It is a race against the clock.  Correct answers builds your score.  Wrong answers take extra time off the clock. Good luck!</h3>
+                    <div>
+                        <button id="startUp" type="button">Click to Start!</button>
+                    </div>
+                </div>
+                <div id="questionSession">
+                    <h1> <span id="theQuestion">The question will go here</span></h1>
+                    <div id="possAnswers">
+                        <div>
+                            <ol id="choices">
+                                <li><button class = answerBtn id=button1 type="radio"><span id="choicesOne">First possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id= button2 type="radio"><span id="choicesTwo">Second possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id= button3 type="radio"><span id="choicesThree">Third possible answer will show here</span></button></li>
+                                <li><button class = answerBtn id = button4 type="radio"><span id="choicesFour">Fourth possible answer will show here</span></button></li>
+                            </ol>
+                        </div>
+                        <p><span id="validate"></span></p>
+                        <p><span id="yourScore"></span></p>
+                    </div>
+                </div>
+
+                <div id="gameOver">
+                    <h1 id="gameOver">Game Over!</h1>
+                    <h2 id="yourScore"></h2>
+                
+                    <form class="userInfo" method="post">
+                      <label for="initials">Enter your initials:</label>
+                      <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
+                    </form>
+                    <div id="msg"></div>
+                    <button type="button" id="postScore">Post score</button>
+                  </div>
+
+
+                <div id="leaderBoard">
+                    <h1 id="currentLeaders">The current leaders</h1>
+                        <div>   
+                            <ol id="leaders"></ol>
+                        </div>
+                        <div>
+                            <button type="button" id="startOver">Play Again</button>
+                        </div>
+                </div>
+                    
+        
+            </div>
+        </div>
+    </body>
+
+    <script src="script.js"></script>
+        
+    
+</html>
