@@ -150,8 +150,7 @@ console.log(theirAnswer);
     response.textContent = "Incorrect";
     areYouRight.append(response);
     yourScore.append("Your score is " + score);
-    showQuestion();
-
+    showQuestions();
  }
     else {
         var response = document.createElement("p");
@@ -159,8 +158,7 @@ console.log(theirAnswer);
         areYouRight.append(response);
         score++
         yourScore.append("Your score is " + score);
-    showQuestion();
-        
+    showQuestions();
     }
     
 }
