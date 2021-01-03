@@ -1,0 +1,14 @@
+
+
+h1 {
+    text-align: center;
+}
+
+
+.hideDiv {
+    display: none;
+}
+
+.showDiv {
+    display: inline;
+}
