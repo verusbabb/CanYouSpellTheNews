@@ -1,37 +1,36 @@
 
 var body = document.body;
 
+//accessing gameStart div and elements within
+var beginGameDiv= document.querySelector("#gameStart");
 var startBtn = document.querySelector("#startUp");
-var beginGame = document.querySelector("#gameStart");
-var showQuestion = document.querySelector("#questionSession");
+
+// accessing questionSession div and elements within
+var showQuestionDiv = document.querySelector("#questionSession");
 var theQuestion = document.querySelector("#theQuestion");
-var endGame = document.querySelector("#gameOver");
 var potentialAnswers = document.querySelector("#answerSet");
+var validateAnswer = document.querySelector("#validate");
+
+//accessing gameOver div and elements
+var gameOverDiv= document.querySelector("#gameOver");
+var yourScoreSum= document.querySelector("#yourScore");
+var userInitialsInput = document.querySelector("#userInitials");
+var postScoreBtn = document.querySelector("#postScore");
+var noInitialsMsg= document.querySelector("#invalidResponse");
+
+//accessing leaderBoard div and elements
+var leaderBoardDiv = document.querySelector("#leaderBoard");
+var startOverBtn = document.querySelector("#startOver");
 
 
-var leaderBoard = document.querySelector("#leaderBoard");
-var oneAnswer = document.querySelector("#choicesOne");
-var twoAnswer = document.querySelector("#choicesTwo");
-var threeAnswer = document.querySelector("#choicesThree");
-var fourAnswer = document.querySelector("#choicesFour");
-var answerBtn = document.querySelectorAll(".answerBtn");
-var buttonOne = document.querySelector("#button1");
-var buttonTwo = document.querySelector("#button2");
-var buttonThree = document.querySelector("#button3");
-var buttonFour  = document.querySelector("#button4");
-var areYouRight = document.querySelector("#validate");
-var yourScore = document.querySelector("#yourScore");
+
+
+// Global variable declarations
+var userInitials;
 var allScores = []
 var timeLeft;
 var interval;
 var answer;
-
-
-//accessing GameOver div elements
-var userInitialsEl = document.querySelector("#userInitials");
-var postScoreBtn = document.querySelector("#postScore");
-var msgDiv = document.querySelector("#msg");
-var userInitials;
 
 //creating new GameOver div elements
 var h2Success = document.createElement("h2");
@@ -61,108 +60,100 @@ var score = 0;
 
 //object that contains questions, potential answers, and correct answers
 var QandA = {
-     questions: ["Who is the Director of the National Institute of Allergy and Infectious Diseases?",
-                    "Which of the following is a city in China?",
-                    "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?",
-                    "Who is Joe Biden's Vice President (elect)",
-                    "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?",
-                    "She is married to Kanye West...",
-                    "What country used to be part of the Soviet Union?",
-                    "Which of these people is a world famous golfer?"],
+    questions: ["Who is the Director of the National Institute of Allergy and Infectious Diseases?",
+        "Which of the following is a city in China?",
+        "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?",
+        "Who is Joe Biden's Vice President (elect)",
+        "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?",
+        "She is married to Kanye West...",
+        "What country used to be part of the Soviet Union?",
+        "Which of these people is a world famous golfer?"],
 
-     answers: [["Dr.Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
-                    ["Woohan", "Beijhing", "Shanghai", "Boston"],
-                    ["Moderna", "Phfizer", "Pfizer", "Modderna"],
-                    ["Kamala Harris", "Camala Harris", "Kammala Harris", "Kamala Haris"],
-                    ["CDC", "THC", "TBD", "CBD"],
-                    ["Kim Jon-un", "Cloe Kardashian", "Kim Kardashian", "Cloey Kardashian"],
-                    ["Lathvia", "Kyrgystan", "Armania","Siberia"],
-                    ["Jack Nicolson", "Tiger Wood", "Arnold Paulmer", "Gary Player"]],
+    answers: [["Dr.Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
+    ["Woohan", "Beijhing", "Shanghai", "Boston"],
+    ["Moderna", "Phfizer", "Pfizer", "Modderna"],
+    ["Kamala Harris", "Camala Harris", "Kammala Harris", "Kamala Haris"],
+    ["CDC", "THC", "TBD", "CBD"],
+    ["Kim Jon-un", "Cloe Kardashian", "Kim Kardashian", "Cloey Kardashian"],
+    ["Lathvia", "Kyrgystan", "Armania", "Siberia"],
+    ["Jack Nicolson", "Tiger Wood", "Arnold Paulmer", "Gary Player"]],
     correct: ["Dr. Anthony Fauci", "Shanghai", "Pfizer", "Kamala Harris", "CBD", "Kim Kardashian", "Kyrgystan", "Gary Player"],
 };
 
-
-console.log(QandA.questions.length);
-
-
-
-
 //ensures that the beginGame div is all that loads when page loads.
-window.onload = function() {
-    beginGame.setAttribute("class", "showDiv");
-    showQuestion.setAttribute("class", "hideDiv");
-    endGame.setAttribute("class", "hideDiv");
-    leaderBoard.setAttribute("class", "hideDiv");
+window.onload = function () {
+    beginGameDiv.setAttribute("class", "showDiv");
+    showQuestionDiv.setAttribute("class", "hideDiv");
+    gameOverDiv.setAttribute("class", "hideDiv");
+    leaderBoardDiv.setAttribute("class", "hideDiv");
 
-    init(); 
+    init();
 }
 
 //accessing stored users
 function init() {
-    var storedGamers =JSON.parse(localStorage.getItem("allGamers"));
+    var storedGamers = JSON.parse(localStorage.getItem("allGamers"));
     if (storedGamers !== null) {
         allScores = storedGamers;
     }
 }
 
 //listening for game start, when button clicked, switches to showQuestions div
-startBtn.addEventListener("click", function() {
+startBtn.addEventListener("click", function () {
     // var score = 0;
-    
+
     showQuestions();
 })
 
-    
-function showQuestions() {    
+
+function showQuestions() {
     // for (j=0; j < QandA.questions.length; j++) {
 
-    beginGame.setAttribute("class", "hideDiv");
-    showQuestion.setAttribute("class", "showDiv");
-    endGame.setAttribute("class", "hideDiv");
-    leaderBoard.setAttribute("class", "hideDiv");
+        beginGameDiv.setAttribute("class", "hideDiv");
+        showQuestionDiv.setAttribute("class", "showDiv");
+        gameOverDiv.setAttribute("class", "hideDiv");
+        leaderBoardDiv.setAttribute("class", "hideDiv");
 
-//need to take time off clock in here and stop clock if run out of questions.
+    //need to take time off clock in here and stop clock if run out of questions.
 
-var question = document.createElement("h2");
-question.textContent = QandA.questions[0];
-theQuestion.append(question);
+    var question = document.createElement("h2");
+    question.textContent = QandA.questions[0];
+    theQuestion.append(question);
 
-makeBullets();
+    displayOptions();
 }
 
-function makeBullets() {
+function displayOptions() {
     for (i = 0; i < QandA.answers[i].length; i++) {
-    answer = document.createElement("button");
-    answer.textContent = (QandA.answers[0][i]);
-    potentialAnswers.append(answer)
-    
-   
-    var breakPoint = document.createElement("br");
-    potentialAnswers.append(breakPoint);
-}}
+        answer = document.createElement("button");
+        answer.textContent = (QandA.answers[0][i]);
+        potentialAnswers.append(answer)
 
-potentialAnswers.onclick = function(event) {
+
+        var breakPoint = document.createElement("br");
+        potentialAnswers.append(breakPoint);
+    }
+}
+
+potentialAnswers.onclick = function (event) {
     var theirAnswer = event.target
 
-console.log(theirAnswer);
- if (QandA.correct[i]) {
-    var response = document.createElement("p");
-    response.textContent = "Incorrect";
-    areYouRight.append(response);
-    yourScore.append("Your score is " + score);
-    showQuestions();
- }
+    console.log(theirAnswer);
+    if (QandA.correct[i]) {
+        var response = document.createElement("p");
+        response.textContent = "Incorrect";
+        validateAnswer.append(response);
+        yourScore.append("Your score is " + score);
+    }
     else {
         var response = document.createElement("p");
         response.textContent = "Correct";
-        areYouRight.append(response);
+        validateAnswer.append(response);
         score++
         yourScore.append("Your score is " + score);
-    showQuestions();
     }
-    
 }
 
 
-    
+
 

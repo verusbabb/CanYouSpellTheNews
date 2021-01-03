@@ -1,75 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
+
     <!-- fun title -->
     <title>Can You Spell The News?</title>
     <link rel="stylesheet" href="style.css" />
-    
-
-  </head>
-
-  <header>
-      <div id="linkToLeaders">
-          <p id="leaderBoardLink"><span></span></p>
-      </div>
-
-      <div id="countDown">
-          <p class= "timeLeft" id="timer"></p>
-      </div>
-  </header>
-    <body>
-        <div class="wrapper">
-                <div id="gameStart">
-                    <h1>Can You Spell The News?</h1>
-                    <h2>Earn points by knowing the right answer (both true and spelled correctly)</h2>
-                    <h3>In this challenge you need to know the news tidbit AND spell it correctly.  It is a race against the clock.  Correct answers builds your score.  Wrong answers take extra time off the clock. Good luck!</h3>
-                    <div>
-                        <button id="startUp" type="button">Click to Start!</button>
-                    </div>
-                </div>
-                
-                <div id="questionSession">
-                    <div id="theQuestion"></div>
-                        <ol id="answerSet"></ol>
-            
-                    
-                    <div id="results">
-                        <p><span id="validate"></span></p>
-                        <p><span id="yourScore"></span></p>
-                    </div>
-
-                </div>
-
-                <div id="gameOver">
-                    <h1 id="gameOver">Game Over!</h1>
-                    <h2 id="yourScore"></h2>
-                
-                    <form class="userInfo" method="post">
-                      <label for="initials">Enter your initials:</label>
-                      <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
-                    </form>
-                    <div id="msg"></div>
-                    <button type="button" id="postScore">Post score</button>
-                  </div>
 
 
-                <div id="leaderBoard">
-                    <h1 id="currentLeaders">The current leaders</h1>
-                        <div>   
-                            <ol id="leaders"></ol>
-                        </div>
-                        <div>
-                            <button type="button" id="startOver">Play Again</button>
-                        </div>
-                </div>
+</head>
+
+<header>
+    <div id="linkToLeaders">
+        <p id="leaderBoardLink"><span></span></p>
+    </div>
+
+    <div id="countDown">
+        <p class="timeLeft" id="timer"></p>
+    </div>
+</header>
+
+<body>
+    <!-- Welcome screen with directions for quiz game -->
+    <div id="gameStart">
+        <h1>Can You Spell The News?</h1>
+        <h2>Earn points by knowing the right answer (both true and spelled correctly)</h2>
+        <h3>In this challenge you need to know the news tidbit AND spell it correctly. It is a race against the clock.
+            Correct answers builds your score. Wrong answers take extra time off the clock. Good luck!</h3>
+        <div>
+            <button id="startUp" type="button">Click to Start!</button>
         </div>
-    </body>
+    </div>
 
-    <script src="qRotationScript.js"></script>
-        
-    
+    <!-- Question and answer section -->
+    <div id="questionSession">
+        <div id="theQuestion"></div>
+        <ol id="answerSet"></ol>
+
+        <!-- Validate whether answer is correct or incorrect -->
+        <p id="validate"></p>
+        </div>
+    </div>
+
+    <!-- Displays when time has run out or no more questions-->
+    <div id="gameOver">
+        <h1 id="gameOverNotification">Game Over!</h1>
+        <h2 id="yourScore"></h2>
+
+        <!-- Captures gamers initials -->
+        <form class="userInfo" method="post">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
+        </form>
+        <div id="invalidResponse"></div>
+        <button type="button" id="postScore">Post score</button>
+    </div>
+
+    <!-- Posts gamer to leaderboard and gives opportunity to play again -->
+    <div id="leaderBoard">
+        <h1 id="theLeaders">The current leaders</h1>
+        <div>
+            <ol id="leaderList"></ol>
+        </div>
+        <div>
+            <button type="button" id="startOver">Play Again</button>
+        </div>
+    </div>
+</body>
+
+<script src="qRotationScript.js"></script>
+
+
 </html>
