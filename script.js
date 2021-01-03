@@ -62,26 +62,48 @@ var score = 0;
 
 
 //object that contains questions, potential answers, and correct answers
-var QandA = {
-    questions: ["Who is the Director of the National Institute of Allergy and Infectious Diseases?",
-        "Which of the following is a city in China?",
-        "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?",
-        "Who is Joe Biden's Vice President (elect)",
-        "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?",
-        "She is married to Kanye West...",
-        "What country used to be part of the Soviet Union?",
-        "Which of these people is a world famous golfer?"],
+var QandA = [{
+    question: "Who is the Director of the National Institute of Allergy and Infectious Diseases?",
+    answers: ["Dr.Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
+    correct: "Dr. Anthony Fauci"
+},
+{
+    question: "Which of the following is a city in China?",
+    answers: ["Woohan", "Beijhing", "Shanghai", "Boston"],
+    correct: "Shanghai"
+},
+{
+    question: "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?",
+    answers: ["Moderna", "Phfizer", "Pfizer", "Medarna"],
+    correct: "Pfizer"
+},
+{
+    question: "Who is Joe Biden's Vice President (elect)",
+    answers: ["Kamala Harris", "Camala Harris", "Kammala Harris", "Kamala Haris"],
+    correct: "Kamala Harris"
+},
+{
+    question: "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?",
+    answers: ["CDC", "THC", "TBD", "CBD"],
+    correct: "CBD"
+},
+{
+    question: "She is married to Kanye West...",
+    answers: ["Kim Jon-un", "Cloe Kardashian", "Kim Kardashian", "Cloey Kardashian"],
+    correct: "Kim Kasrdashian"
+},
+{
+    question: "What country used to be part of the Soviet Union?",
+    answers: ["Lathvia", "Kyrgystan", "Armania", "Siberia"],
+    correct: "Kyrgystan"
+ },
+ {
+    question: "Which of these people is a world famous golfer?",
+    answers: ["Jack Nicolson", "Tiger Wood", "Arnold Paulmer", "Gary Player"],
+    correct: "Gary Player"
+},];
 
-    answers: [["Dr.Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
-    ["Woohan", "Beijhing", "Shanghai", "Boston"],
-    ["Moderna", "Phfizer", "Pfizer", "Modderna"],
-    ["Kamala Harris", "Camala Harris", "Kammala Harris", "Kamala Haris"],
-    ["CDC", "THC", "TBD", "CBD"],
-    ["Kim Jon-un", "Cloe Kardashian", "Kim Kardashian", "Cloey Kardashian"],
-    ["Lathvia", "Kyrgystan", "Armania", "Siberia"],
-    ["Jack Nicolson", "Tiger Wood", "Arnold Paulmer", "Gary Player"]],
-    correct: ["Dr. Anthony Fauci", "Shanghai", "Pfizer", "Kamala Harris", "CBD", "Kim Kardashian", "Kyrgystan", "Gary Player"],
-};
+console.log(QandA[1].question, QandA[1].answers[2]);
 
 //ensures that the beginGame div is all that loads when page loads.
 window.onload = function () {
