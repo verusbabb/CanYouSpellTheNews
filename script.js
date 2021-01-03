@@ -1,5 +1,5 @@
 
-var body = document.body;
+// var body = document.body;
 
 //accessing gameStart div and elements within
 var beginGameDiv= document.querySelector("#gameStart");
