@@ -20,6 +20,7 @@ var yourScoreSum= document.querySelector("#yourScore");
 var userInitialsInput = document.querySelector("#userInitials");
 var postScoreBtn = document.querySelector("#postScore");
 var noInitialsMsg= document.querySelector("#invalidResponse");
+var finalScore = document.querySelector("#finalScore");
 
 //accessing leaderBoard div and elements
 var leaderBoardDiv = document.querySelector("#leaderBoard");
@@ -39,7 +40,6 @@ var timeSeconds = timeToPlay;
 var score = 0;
 
 var j = 0;
-var i = 0;
 
 //creating new GameOver div elements
 var h2Success = document.createElement("h2");
@@ -143,6 +143,7 @@ console.log(QandA.length);
 
 function showQuestions() {
     startTimer();
+    // for (j < QandA.length; j++;) {
         //display the show question Div
         beginGameDiv.setAttribute("class", "hideDiv");
         showQuestionDiv.setAttribute("class", "showDiv");
@@ -151,6 +152,7 @@ function showQuestions() {
         TimerDiv.setAttribute("class", "showDiv")
 
     
+
 
     theQuestion.append(QandA[j].question);
     
@@ -177,15 +179,18 @@ function showQuestions() {
             }
 
     
-       pause();
+       postQuestionPause();
+
        goToGameOver();
 
-            console.log(answerCheck);
-            console.log(score);
+            console.log(QandA[j]);
+
         });
     
     });
 }
+
+
 
 // Timer function
 function startTimer() {
@@ -205,10 +210,17 @@ function startTimer() {
 }
 
 // Pause function
-function pause() {
+function postQuestionPause() {
     interval = setInterval(function() {
-        questionSession.remove();
+        questionDiv.remove();
     }, 1000);
+}
+
+function postGameOverPause() {
+    interval = setInterval(function() {
+        gameOverDiv.remove();
+        goToLeaderBoard();
+    }, 3000);
 }
     
 
@@ -226,7 +238,7 @@ function pause() {
     allScores.push(scoreObject);
 
     localStorage.setItem("allGamers", JSON.stringify(allScores));
-    first.textContent = userInitials;
+    first.textContent = userInitials + "scored " + score;
     leaderList.appendChild(first);
 
 
@@ -252,7 +264,9 @@ function goToGameOver() {
                 noInitialsMsg.appendChild(h2Success);
                 
               }
-        goToLeaderBoard();
+        finalScore.textContent = "Your final score is " + score;
+        finalScore.append(score);
+        postGameOverPause();
     
         });
 }
