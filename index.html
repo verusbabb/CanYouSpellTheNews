@@ -27,15 +27,15 @@
 
 <body>
 
-    <!-- <header class="row">
-        <div class="col-sm">
-            <img src="Images/familyNarrow.png" alt="Family photo" class="img-fluid">
-        </div>
+    <header class="row">
+        <!-- <div class="col-sm">
+            <img src="Assets/bannerCollage.jpeg" alt="Media Collage" class="container-fluid">
+        </div> -->
 
-    </header> -->
+    </header>
 
     <!-- bootstrap navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
 
         <a class="navbar-brand" href="index.html">
             <h2>LeaderBoard</h2>
@@ -57,22 +57,25 @@
 
     </nav>
     <div class="row mx-auto">
-        <section class="col-sm-6 mx-auto border border-dark p-4">
+        <section class="col-sm-6 mx-auto mt-4 border border-dark p-4">
             <!-- Welcome screen with directions for quiz game -->
             <div id="gameStart">
                 <h1>Can You Spell The News?</h1>
-                <h2>Earn points by knowing the right answer (both true and spelled correctly)</h2>
-                <h3>In this challenge you need to know the news tidbit AND spell it correctly. It is a race against the
-                    clock.
-                    Correct answers builds your score. Wrong answers take extra time off the clock. Good luck!</h3>
-                <div>
-                    <button id="startUp" type="button">Click to Start!</button>
-                </div>
+                <h4>Welcome to the game that tests both your news-knowledge and spelling skills.</h2>
+                <ul>
+                    <li>You will be quizzed on "the news"<div class=""></div></li>
+                    <li>You earn points by selecting the right answer.</li>
+                    <li>Wrong answers take time off the clock, so don't even think about Googling for the answer.</li>
+                </ul>
+                <br>
+                <button id="startUp" type="button">Click to Start!</button>
+                
+            
             </div>
 
             <!-- Question and answer section -->
             <div id="questionSession">
-                <div id="theQuestion"></div>
+                <h2 id="theQuestion"></h2>
                 <ol id="answerSet" class="answerSet" value="answerSet"></ol>
 
                 <!-- Validate whether answer is correct or incorrect -->

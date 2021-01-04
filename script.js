@@ -8,7 +8,7 @@ var startBtn = document.querySelector("#startUp");
 // accessing questionSession div and elements within
 var showQuestionDiv = document.querySelector("#questionSession");
 var theQuestion = document.querySelector("#theQuestion");
-var potentialAnswers = document.querySelector(".answerSet");
+var potentialAnswers = document.querySelector("#answerSet");
 var validateAnswer = document.querySelector("#validate");
 var TimerDiv = document.querySelector("#theTimer");
 var timeRmaining = document.querySelector("#timeRemaining");
@@ -104,6 +104,7 @@ var QandA = [{
 },];
 
 console.log(QandA[1].question, QandA[1].answers[2]);
+console.log(QandA.length);
 
 //ensures that the beginGame div is all that loads when page loads.
 window.onload = function () {
@@ -134,8 +135,8 @@ startBtn.addEventListener("click", function () {
 
 //Begin showing questions
 function showQuestions() {
-    // for (j=0; j < QandA.questions.length; j++) {
-
+    
+        //display the show question Div
         beginGameDiv.setAttribute("class", "hideDiv");
         showQuestionDiv.setAttribute("class", "showDiv");
         gameOverDiv.setAttribute("class", "hideDiv");
@@ -144,51 +145,40 @@ function showQuestions() {
 
     //need to take time off clock in here and stop clock if run out of questions.
 
-    var question = document.createElement("h2");
-    question.textContent = QandA.questions[0];
-    theQuestion.append(question);
+     theQuestion.append(QandA[1].question);
 
-    displayOptions();
+    QandA[1].answers.forEach(function(answer) {
+        var answerBtnEl = document.createElement("button");
+        answerBtnEl.textContent =  answer;
+        // answerBtnEl.addEventListener("click", checkAnswer);
+        potentialAnswers.appendChild(answerBtnEl);
+        var breakPoint = document.createElement("br");
+        potentialAnswers.appendChild(breakPoint);
+
+        answerBtnEl.addEventListener("click", function() {
+            
+            //target the click
+            
+            if ((QandA[1].correct) {
+                answerCheck = "Correct";
+                validateAnswer.append(answerCheck);
+            }
+            else {
+                answerCheck = "Incorrect";
+                validateAnswer.append(answerCheck);
+            }
+            console.log(QandA[1].correct.value);
+            console.log(answerCheck);
+        });
+        
+
+    });
+
+    // displayOptions();
     // startTimer();
 }
 
-// For each question, display the possible answers
-function displayOptions() {
-    for (i = 0; i < QandA.answers[i].length; i++) {
-        answer = document.createElement("button");
-        answer.textContent = (QandA.answers[0][i]);
-        potentialAnswers.append(answer)
 
-
-        var breakPoint = document.createElement("br");
-        potentialAnswers.append(breakPoint);
-    }
-
-    readAnswer();
-}
-
-//read their click/answer and validate correct or incorrect.
-function readAnswer() {
-potentialAnswers.onclick = function (event) {
-    potentialAnswers = event.target;
-
-    console.log(potentialAnswers);
-    console.log(QandA.correct[i]);
-    if (potentialAnswers !== QandA.correct[i].value) {
-        var response = document.createElement("p");
-        response.textContent = "Incorrect";
-        validateAnswer.append(response);
-        // yourScore.append("Your score is " + score);
-    }
-    else {
-        var response = document.createElement("p");
-        response.textContent = "Correct";
-        validateAnswer.append(response);
-        score++
-        // yourScore.append("Your score is " + score);
-    }
-}
-}
 
 // Timer function
 // function startTimer() {
