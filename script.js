@@ -24,6 +24,7 @@ var noInitialsMsg= document.querySelector("#invalidResponse");
 //accessing leaderBoard div and elements
 var leaderBoardDiv = document.querySelector("#leaderBoard");
 var startOverBtn = document.querySelector("#startOver");
+var leaderList = document.querySelector("#leaderList");
 
 
 
@@ -33,9 +34,12 @@ var userInitials;
 var allScores = []
 var answerCheck;
 var theirAnswer;
-var timeToPlay = 30;
+var timeToPlay = 10;
 var timeSeconds = timeToPlay;
 var score = 0;
+
+var j = 0;
+var i = 0;
 
 //creating new GameOver div elements
 var h2Success = document.createElement("h2");
@@ -130,14 +134,15 @@ function init() {
 
 //listening for game start, when button clicked, switches to showQuestions div
 startBtn.addEventListener("click", function () {
-    // var score = 0;
-
-    showQuestions();
+showQuestions();
 })
 
 //Begin showing questions
+console.log(QandA.length);
+
+
 function showQuestions() {
-    
+    startTimer();
         //display the show question Div
         beginGameDiv.setAttribute("class", "hideDiv");
         showQuestionDiv.setAttribute("class", "showDiv");
@@ -145,13 +150,14 @@ function showQuestions() {
         leaderBoardDiv.setAttribute("class", "hideDiv");
         TimerDiv.setAttribute("class", "showDiv")
 
+    
 
-    theQuestion.append(QandA[1].question);
-    startTimer();
+    theQuestion.append(QandA[j].question);
+    
 
-    QandA[1].answers.forEach(function(answer) {
+    QandA[j].answers.forEach(function(answers) {
         var answerBtnEl = document.createElement("button");
-        answerBtnEl.textContent =  answer;
+        answerBtnEl.textContent =  answers;
         potentialAnswers.appendChild(answerBtnEl);
         var breakPoint = document.createElement("br");
         potentialAnswers.appendChild(breakPoint);
@@ -160,7 +166,7 @@ function showQuestions() {
         answerBtnEl.addEventListener("click", function() {
         
             
-            if (answerBtnEl.textContent === QandA[1].correct) {
+            if (answerBtnEl.textContent === QandA[j].correct) {
                 answerCheck = "Correct";
                 validateAnswer.append(answerCheck);
                 score++;
@@ -170,35 +176,85 @@ function showQuestions() {
                 validateAnswer.append(answerCheck);
             }
 
+    
+       pause();
+       goToGameOver();
+
             console.log(answerCheck);
             console.log(score);
         });
+    
     });
-    };
-            
-
-    // displayOptions();
-
-
-
+}
 
 // Timer function
 function startTimer() {
     interval = setInterval(function() {
+
     if (timeToPlay > 0) {
         timeSeconds--;
         timeRemaining.textContent = timeSeconds;
     }
     else {
         timeRemaining.textContent = "0";
-        // $(timeRemaining).text("0");
-        // clearInterval(interval);
-        // gameOver(score);
+
+        clearInterval(interval);
+        gameOverDiv();
     }
-    // return timeSeconds;
     }, 1000);
 }
 
-// BEFORE RUNNING QUESTION LOOP, NEED TO CLEAR THE PREVIOUS QUESTION AND ANSWERS IN THE ONCLICK SECTION.
+// Pause function
+function pause() {
+    interval = setInterval(function() {
+        questionSession.remove();
+    }, 1000);
+}
+    
+
+//  Leaderboard div control
+ function goToLeaderBoard() {
+    beginGameDiv.setAttribute("class", "hideDiv");
+    showQuestionDiv.setAttribute("class", "hideDiv");
+    gameOverDiv.setAttribute("class", "hideDiv");
+    leaderBoardDiv.setAttribute("class", "showDiv");
+
+    //create object to hold userintials and score
+    var scoreObject = {gamer: userInitials, scoreValue: score}
+
+    //adding scoreObject to the allScores array
+    allScores.push(scoreObject);
+
+    localStorage.setItem("allGamers", JSON.stringify(allScores));
+    first.textContent = userInitials;
+    leaderList.appendChild(first);
+
+
+}
+
+// GameOver div control
+function goToGameOver() {
+    beginGameDiv.setAttribute("class", "hideDiv");
+    showQuestionDiv.setAttribute("class", "hideDiv");
+    gameOverDiv.setAttribute("class", "showDiv");
+    leaderBoardDiv.setAttribute("class", "hideDiv");
+    postScoreBtn.addEventListener("click", function(event) {
+        // event.preventDefault();
+    
+        userInitials = document.querySelector("#userInitials").value;
+    
+        if (userInitials === "") {
+        
+            noInitialsMsg.appendChild(h2Fail);
+        }
+          else {
+                h2Fail.remove();
+                noInitialsMsg.appendChild(h2Success);
+                
+              }
+        goToLeaderBoard();
+    
+        });
+}
 
 
