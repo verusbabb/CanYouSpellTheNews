@@ -13,6 +13,7 @@ var validateAnswer = document.querySelector("#validate");
 var TimerDiv = document.querySelector("#theTimer");
 var timeRmaining = document.querySelector("#timeRemaining");
 
+
 //accessing gameOver div and elements
 var gameOverDiv= document.querySelector("#gameOver");
 var yourScoreSum= document.querySelector("#yourScore");
@@ -30,10 +31,11 @@ var startOverBtn = document.querySelector("#startOver");
 // Global variable declarations
 var userInitials;
 var allScores = []
-var answer;
+var answerCheck;
 var theirAnswer;
-var timeToPlay = 10;
+var timeToPlay = 30;
 var timeSeconds = timeToPlay;
+var score = 0;
 
 //creating new GameOver div elements
 var h2Success = document.createElement("h2");
@@ -146,6 +148,7 @@ function showQuestions() {
     //need to take time off clock in here and stop clock if run out of questions.
 
      theQuestion.append(QandA[1].question);
+     startTimer();
 
     QandA[1].answers.forEach(function(answer) {
         var answerBtnEl = document.createElement("button");
@@ -155,48 +158,49 @@ function showQuestions() {
         var breakPoint = document.createElement("br");
         potentialAnswers.appendChild(breakPoint);
 
+
         answerBtnEl.addEventListener("click", function() {
+        
             
-            //target the click
-            
-            if ((QandA[1].correct) {
+            if (answerBtnEl.textContent === QandA[1].correct) {
                 answerCheck = "Correct";
                 validateAnswer.append(answerCheck);
+                score++;
             }
             else {
                 answerCheck = "Incorrect";
                 validateAnswer.append(answerCheck);
             }
-            console.log(QandA[1].correct.value);
+            
             console.log(answerCheck);
+            console.log(score);
         });
-        
 
     });
-
+};
     // displayOptions();
-    // startTimer();
-}
+
 
 
 
 // Timer function
-// function startTimer() {
-//     interval = setInterval(function() {
-//     if (timeToPlay > 0) {
-//         timeSeconds--;
-//         timeRemaining.textContent = timeSeconds;
-//     }
-//     else {
-//         timeRemaining.textContent = "0";
-//         // $(timeRemaining).text("0");
-//         // clearInterval(interval);
-//         clearInterval(interval);
-//         gameOver(score);
-//     }
-//     // return timeSeconds;
-//     }, 1000);
-// }
+function startTimer() {
+    interval = setInterval(function() {
+    if (timeToPlay > 0) {
+
+        timeSeconds--;
+        timeRemaining.textContent = timeSeconds;
+    }
+    else {
+        timeRemaining.textContent = "0";
+        // $(timeRemaining).text("0");
+        // clearInterval(interval);
+        // clearInterval(interval);
+        // gameOver(score);
+    }
+    // return timeSeconds;
+    }, 1000);
+}
 
 // BEFORE RUNNING QUESTION LOOP, NEED TO CLEAR THE PREVIOUS QUESTION AND ANSWERS IN THE ONCLICK SECTION.
 
