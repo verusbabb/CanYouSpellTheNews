@@ -145,20 +145,18 @@ function showQuestions() {
         leaderBoardDiv.setAttribute("class", "hideDiv");
         TimerDiv.setAttribute("class", "showDiv")
 
-    //need to take time off clock in here and stop clock if run out of questions.
 
-     theQuestion.append(QandA[1].question);
-     startTimer();
+    theQuestion.append(QandA[1].question);
+    startTimer();
 
     QandA[1].answers.forEach(function(answer) {
         var answerBtnEl = document.createElement("button");
         answerBtnEl.textContent =  answer;
-        // answerBtnEl.addEventListener("click", checkAnswer);
         potentialAnswers.appendChild(answerBtnEl);
         var breakPoint = document.createElement("br");
         potentialAnswers.appendChild(breakPoint);
 
-
+    
         answerBtnEl.addEventListener("click", function() {
         
             
@@ -171,13 +169,14 @@ function showQuestions() {
                 answerCheck = "Incorrect";
                 validateAnswer.append(answerCheck);
             }
-            
+
             console.log(answerCheck);
             console.log(score);
         });
-
     });
-};
+    };
+            
+
     // displayOptions();
 
 
@@ -187,14 +186,12 @@ function showQuestions() {
 function startTimer() {
     interval = setInterval(function() {
     if (timeToPlay > 0) {
-
         timeSeconds--;
         timeRemaining.textContent = timeSeconds;
     }
     else {
         timeRemaining.textContent = "0";
         // $(timeRemaining).text("0");
-        // clearInterval(interval);
         // clearInterval(interval);
         // gameOver(score);
     }
