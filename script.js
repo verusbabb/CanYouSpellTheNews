@@ -211,7 +211,7 @@
 
         function goToLeaderBoard() {
             theGameOverDiv.style = "display: none";
-            leaderBoardDiv.style = "boarder: 2px solid black";
+            leaderBoardDiv.style = "border: 2px solid black";
             welcomeScreenDiv.style = "display: none";
 
             localStorage.setItem("allGamers", JSON.stringify(allScores));
