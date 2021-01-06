@@ -8,21 +8,21 @@
 </head>
 
 <body>
-    
+
     <div id="welcomeScreen">
         <h1>Can You Spell The News?</h1>
-                <h4>Welcome to the game that tests both your news-knowledge and spelling skills.</h2>
-                <ul>
-                    <li>You will be quizzed on "the news"<div class=""></div></li>
-                    <li>You earn points by selecting the right answer.</li>
-                    <li>Wrong answers take time off the clock, so don't even think about Googling for the answer.</li>
-                </ul>
-                <br>
-                <button id="startPlay" type="button">Click to Start!</button>
-                <p>
+        <h4>Welcome to the game that tests both your news-knowledge and spelling skills.</h2>
+            <ul>
+                <li>You will be quizzed on "the news"<div class=""></div>
+                </li>
+                <li>You earn points by selecting the right answer.</li>
+                <li>Wrong answers take time off the clock, so don't even think about Googling for the answer.</li>
+            </ul>
+            <br>
+            <button id="startPlay" type="button">Click to Start!</button>
+            <p>
     </div>
-    
-    
+
     <div id="theQuiz">
         <div id="showQuestion"></div>
 
@@ -32,23 +32,65 @@
         </div>
     </div>
 
+    <div id="gameOver">
+        <h1>Game Over!</h1>
+        <h2 id="finalScore"></h2>
+
+        <form class="userInfo" method="post">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
+        </form>
+        <br>
+        <p id="invalidResponse"></p>
+        <button type="button" id="postScore">Post score</button>
+        <br>
+    </div>
+    </div>
+
+    <div id="leaderBoard">
+        <h1 id="currrentLeaders">The Current Leaders:</h1>
+        <ol id="leaderList"></ol>
+    </div>
+
+
+
 
     <script>
+        // Accessing html elements
         var welcomeScreenDiv = document.querySelector("#welcomeScreen");
-        var theQuizDiv = document.querySelector ("#theQuiz");
-        var startPlayBtn = document.querySelector ("#startPlay");
+        var theQuizDiv = document.querySelector("#theQuiz");
+        var startPlayBtn = document.querySelector("#startPlay");
         var showQuestionDiv = document.querySelector("#showQuestion");
         var showAnswersDiv = document.querySelector("#showAnswers");
         var theTimerDiv = document.querySelector("#theTimer");
-        var theQuestionEl = document.createElement("h2");
-        var answerBtn;
+        var theGameOverDiv = document.querySelector("#gameOver");
+        var theUserInitials = document.querySelector("#userInitials");
+        var theFinalScore = document.querySelector("#finalScore");
+        var leaderBoardDiv = document.querySelector("#leaderBoard");
         var timeRemainingDiv = document.querySelector("#timeRemaining");
 
+        //Creating a new elements
+        var theQuestionEl = document.createElement("h2");
         var validatedEl = document.createElement("p");
-        // var checkAnswer;
+
+        // //creating new GameOver div elements
+        // var h2Success = document.createElement("h2");
+        // var h2Fail = document.createElement("h2");
+        var invalidResponseEl = document.querySelector("#invalidResponse");
+        var postScoreBtn = document.querySelector("#postScore");
+        var finalScoreEl = document.querySelector("#finalScore");
+
+        //appending content in GameOver div
+        // h2Success.textContent = "Thank you!";
+        // h2Fail.textContent = "You must enter initials";
+        // h2Success.setAttribute("style", "color:black; font-size: 14px;");
+        // h2Fail.setAttribute("style", "color:black; font-size: 14px;");
+        
+
+        // setting global variables
+        var answerBtn;
         var score = 0;
         var validated;
-
         var timeToPlay = 20;
         var timeSeconds = timeToPlay;
 
@@ -93,22 +135,29 @@
             correct: "Gary Player"
         },];
 
-    window.onload = function () {
-    welcomeScreenDiv.style = "border: 2px solid black;";
-    theQuizDiv.style = "display: none;";
-   
-    }
+        window.onload = function () {
+            welcomeScreenDiv.style = "border: 2px solid black;";
+            leaderBoardDiv.style = "display: none;";
+            theQuizDiv.style = "display: none;";
+            theGameOverDiv.style = "display: none;";
 
-    // init();
+        }
 
-    startPlayBtn.addEventListener("click", function() {
-        quizQuestion();
-    })
+        // init();
+
+        // function init() {
+
+        // }
+
+        startPlayBtn.addEventListener("click", function () {
+            quizQuestion();
+        })
         // quizQuestion();
 
         // Show questions and answers and record response
         function quizQuestion() {
             theQuizDiv.style = "display: block; border: 2px solid black";
+            leaderBoardDiv.style = "display: none";
             welcomeScreenDiv.style = "display: none";
 
             startTimer()
@@ -156,39 +205,37 @@
                     var timeExpired = document.createElement("p");
                     timeExpired.textContent = "Time Expired";
                     showAnswersDiv.append(timeExpired);
+                    gameOver();
                 }
             }, 1000);
         }
 
+        // GameOver div control
+        function gameOver() {
+            theQuizDiv.style = "display: none";
+            theGameOverDiv.style = "border: 2px solid black;"
 
-
-
-        //     displayValidation();
-
-
-
-
-    //     function displayValidation() {
-    //         validatedEl.textContent = checkAnswer;
-    //         console.log(validatedEl.textContent);
-    //         showAnswersDiv.append(validatedEl);
-    //     }
-    //         pauseOnValidation();
-
+            finalScoreEl.textContent = "Your final score is " + score;
     
 
-    //     Pause function() {
-    //     function pauseOnValidation() {
-    //         interval = setInterval(function () {
+            postScoreBtn.addEventListener("click", function (event) {
 
-    //         }, 1000);
-    //         questionDiv.remove();
-    //         showAnswersDiv.remove();
-    //         validatedP.remove();
-    //     }
-    //     console.log(i)
-    //     quizQuestion();
-    // }
+                userInitials = document.querySelector("#userInitials").value;
+
+                if (userInitials === "") {
+
+                    invalidResponseEl.textContent = "You need to enter initials";
+                }
+                else {
+                    invalidResponseEl.textContent = "Great";
+
+                }
+                
+
+            })
+        }
+
+
 
 
     </script>
