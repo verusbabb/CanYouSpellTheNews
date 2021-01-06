@@ -57,7 +57,7 @@
             correct: "Kamala Harris"
         },
         {
-            question: "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?",
+            question: "Which active ingredient in cannabis is believed to treat pain and anxiety without a 'high'?",
             answers: ["CDC", "THC", "TBD", "CBD"],
             correct: "CBD"
         },
