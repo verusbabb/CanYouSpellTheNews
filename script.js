@@ -20,12 +20,9 @@
         var validatedEl = document.createElement("p");
 
         // //creating new GameOver div elements
-
         var invalidResponseEl = document.querySelector("#invalidResponse");
         var postScoreBtn = document.querySelector("#postScore");
         var finalScoreEl = document.querySelector("#finalScore");
-
-        //appending content in GameOver div
 
 
         // setting global variables
@@ -38,6 +35,7 @@
         var userInitials;
         var questionIndex = 0;
 
+        //question and answer object
         var QandA = [{
             question: "Who is the Director of the National Institute of Allergy and Infectious Diseases?",
             answers: ["Dr. Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
@@ -96,6 +94,7 @@
             console.log(allScores);
         }
 
+        //listening for leaderboard button click
         linkToLeaderBoardBtn.addEventListener("click", function () {
             goToLeaderBoard();
         })
@@ -103,13 +102,14 @@
 
         // }
 
+        //listening for start button click
         startPlayBtn.addEventListener("click", function () {
             quizQuestion();
             startTimer();
         })
-        // quizQuestion();
+        
 
-        // Show questions and answers and record response
+        // Function to show questions and answers and record response
         function quizQuestion() {
             theQuizDiv.style = "display: block; border: 2px solid black";
             leaderBoardDiv.style = "display: none";
@@ -160,11 +160,9 @@
             })
         }
 
-        // Timer function
+        // timer function
         function startTimer() {
-
             interval = setInterval(function () {
-
 
                 if (timeSeconds > 0) {
                     timeSeconds--;
@@ -180,7 +178,7 @@
             }, 1000);
         }
 
-        // GameOver div control
+        // game over function
         function gameOver() {
             theQuizDiv.style = "display: none";
             theGameOverDiv.style = "border: 2px solid black;"
@@ -209,6 +207,7 @@
 
         }
 
+        //leaderboard function
         function goToLeaderBoard() {
             theGameOverDiv.style = "display: none";
             leaderBoardDiv.style = "border: 2px solid black";

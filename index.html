@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Spell The News Quiz Challenge</title>
 </head>
+
+<!-- NOTE:  Opted for less HTML and creating page content using Javascript -->
 
 <body>
     <button id="linkToLeaderBoard">Go To Leaderboard</button>
     <br><br>
 
+    <!-- Welcome Screen -->
     <div id="welcomeScreen">
         <h1>Can You Spell The News?</h1>
         <h4>Welcome to the game that tests both your news-knowledge and spelling skills.</h2>
@@ -25,6 +28,7 @@
             <p>
     </div>
 
+    <!-- Main question and answer section -->
     <div id="theQuiz">
         <div id="showQuestion"></div>
 
@@ -34,6 +38,7 @@
         </div>
     </div>
 
+    <!-- Game ended section, showing final score and obtaining initials to post to leaderboard -->
     <div id="gameOver">
         <h1>Game Over!</h1>
         <h2 id="finalScore"></h2>
@@ -49,6 +54,7 @@
     </div>
     </div>
 
+    <!-- leaderboard section -->
     <div id="leaderBoard">
         <h1 id="currrentLeaders">The Current Leaders:</h1>
         <ol id="leaderList"></ol>
