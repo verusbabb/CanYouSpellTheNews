@@ -8,7 +8,7 @@ You probably will really struggle in life if you can't score at least 4 on this 
 
 The task was to create a quiz using Javascript (not JQuery).  No initial resources were provided (no starting HTML or JS).  We were provided a gif to review to give us a sense of the project goal.  The link is below.
 
-/Assets.projectDemo.gif
+https://github.com/verusbabb/CanYouSpellTheNews/blob/main/Assets/projectDemo.gif
 
 ## User Story
 
