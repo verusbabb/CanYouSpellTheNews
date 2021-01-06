@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="showQuestion"></div>
+
+    <ul id="showAnswers"></ul>
+    <div id="theTimer">
+        <h4>Time remaining: <span id="timeRemaining"></span></h4>
+    </div>
+
+    <script>
+        var questionDiv = document.querySelector("#showQuestion");
+        var answersDiv = document.querySelector("#showAnswers");
+        var theQuestion = document.createElement("h2");
+        var answerBtn;
+        var timeRmaining = document.querySelector("#timeRemaining");
+
+        var validatedP = document.createElement("p");
+        // var checkAnswer;
+        var score = 0;
+        var validated;
+
+        var timeToPlay = 20;
+        var timeSeconds = timeToPlay;
+
+        var QandA = [{
+            question: "Who is the Director of the National Institute of Allergy and Infectious Diseases?",
+            answers: ["Dr. Anthony Fauchi", "Dr. Debra Birx", "Dr. Anthony Fauci", "Dr. Debra Berx"],
+            correct: "Dr. Anthony Fauci"
+        },
+        {
+            question: "Which of the following is a city in China?",
+            answers: ["Woohan", "Beijhing", "Shanghai", "Boston"],
+            correct: "Shanghai"
+        },
+        {
+            question: "Which of the following pharmaceutical companies was the first to get a Covid 19 vaccine approved in US?",
+            answers: ["Moderna", "Phfizer", "Pfizer", "Medarna"],
+            correct: "Pfizer"
+        },
+        {
+            question: "Who is Joe Biden's Vice President (elect)",
+            answers: ["Kamala Harris", "Camala Harris", "Kammala Harris", "Kamala Haris"],
+            correct: "Kamala Harris"
+        },
+        {
+            question: "Which active ingredient in cannibis is believed to treat pain and anxiety without a 'high'?",
+            answers: ["CDC", "THC", "TBD", "CBD"],
+            correct: "CBD"
+        },
+        {
+            question: "She is married to Kanye West...",
+            answers: ["Kim Jon-un", "Cloe Kardashian", "Kim Kardashian", "Cloey Kardashian"],
+            correct: "Kim Kasrdashian"
+        },
+        {
+            question: "What country used to be part of the Soviet Union?",
+            answers: ["Lathvia", "Kyrgystan", "Armania", "Siberia"],
+            correct: "Kyrgystan"
+        },
+        {
+            question: "Which of these people is a world famous golfer?",
+            answers: ["Jack Nicolson", "Tiger Wood", "Arnold Paulmer", "Gary Player"],
+            correct: "Gary Player"
+        },];
+
+        quizQuestion();
+
+        // Show questions and answers and record response
+        function quizQuestion() {
+            startTimer()
+            showQuestion = (QandA[0].question)
+            theQuestion.textContent = showQuestion;
+            questionDiv.append(theQuestion);
+
+            QandA[0].answers.forEach(function (answers) {
+                var answerBtn = document.createElement("button");
+                answerBtn.textContent = answers;
+                answersDiv.appendChild(answerBtn);
+                answerBtn.setAttribute("style", "width: 200px;");
+                var breakPoint = document.createElement("br");
+                answersDiv.appendChild(breakPoint);
+
+
+                answerBtn.addEventListener("click", function () {
+                    console.log(answerBtn.textContent);
+                    if (answerBtn.textContent === QandA[0].correct) {
+                        score++;
+                        validatedP.textContent = "Correct! Your score is " + score + "."
+                        answersDiv.append(validatedP);
+                    }
+                    else {
+                        validatedP.textContent = "Incorrect.  Your score is " + score + " ...AND lost 10 seconds on the timer";
+                        answersDiv.append(validatedP);
+                        timeSeconds -= 10;
+                    }
+                })
+            })
+        }
+
+        // Timer function
+        function startTimer() {
+            
+            interval = setInterval(function () {
+                
+
+                if (timeSeconds > 0) {
+                    timeSeconds--;
+                    timeRemaining.textContent = timeSeconds;
+                }
+                else {
+                    // timeRemaining.textContent = "0";
+
+                    clearInterval(interval);
+                    var timeExpired = document.createElement("p")
+                    timeExpired.textContent = "Time Expired";
+                    answersDiv.append(timeExpired);
+                }
+            }, 1000);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
