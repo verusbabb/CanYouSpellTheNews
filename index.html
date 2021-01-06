@@ -2,124 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- fun title -->
-    <title>Can You Spell The News?</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" />
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
-<!-- <header>
-    <div id="linkToLeaders">
-        <p id="leaderBoardLink"><span></span></p>
+<body>
+    <button id="linkToLeaderBoard">Go To Leaderboard</button>
+    <br><br>
+
+    <div id="welcomeScreen">
+        <h1>Can You Spell The News?</h1>
+        <h4>Welcome to the game that tests both your news-knowledge and spelling skills.</h2>
+            <ul>
+                <li>You will be quizzed on "the news"<div class=""></div>
+                </li>
+                <li>You earn points by selecting the right answer.</li>
+                <li>Wrong answers take time off the clock, so don't even think about Googling for the answer.</li>
+            </ul>
+            <br>
+            <button id="startPlay" type="button">Click to Start!</button>
+            <p>
     </div>
 
-</header> -->
+    <div id="theQuiz">
+        <div id="showQuestion"></div>
 
-<body>
-
-    <header class="row">
-        <!-- <div class="col-sm">
-            <img src="Assets/bannerCollage.jpeg" alt="Media Collage" class="container-fluid">
-        </div> -->
-
-    </header>
-
-    <!-- bootstrap navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-
-        <a class="navbar-brand" href="index.html">
-            <h2>LeaderBoard</h2>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <!-- Notice "active" code for active link -->
-                <a class="nav-link active" aria-current="page" href="index.html">Game</a>
-                <a class="nav-link" href="https://verusbabb.github.io/Responsive-Portfolio/index.html">About Steve</a>
-                
-
-            </div>
-
+        <ul id="showAnswers"></ul>
+        <div id="theTimer">
+            <h4>Time remaining: <span id="timeRemaining"></span></h4>
         </div>
+    </div>
 
-    </nav>
-    <div class="row mx-auto">
-        <section class="col-sm-6 mx-auto mt-4 border border-dark p-4">
-            <!-- Welcome screen with directions for quiz game -->
-            <div id="gameStart">
-                <h1>Can You Spell The News?</h1>
-                <h4>Welcome to the game that tests both your news-knowledge and spelling skills.</h2>
-                <ul>
-                    <li>You will be quizzed on "the news"<div class=""></div></li>
-                    <li>You earn points by selecting the right answer.</li>
-                    <li>Wrong answers take time off the clock, so don't even think about Googling for the answer.</li>
-                </ul>
-                <br>
-                <button id="startUp" type="button">Click to Start!</button>
-                
-            
-            </div>
+    <div id="gameOver">
+        <h1>Game Over!</h1>
+        <h2 id="finalScore"></h2>
 
-            <!-- Question and answer section -->
-            <div id="questionSession">
-                <h2 id="theQuestion"></h2>
-                <ol id="answerSet" class="answerSet" value="answerSet"></ol>
+        <form class="userInfo" method="post">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
+        </form>
+        <br>
+        <p id="invalidResponse"></p>
+        <button type="button" id="postScore">Post score</button>
+        <br>
+    </div>
+    </div>
 
-                <!-- Validate whether answer is correct or incorrect -->
-                <p id="validate"></p>
-            </div>
-    
+    <div id="leaderBoard">
+        <h1 id="currrentLeaders">The Current Leaders:</h1>
+        <ol id="leaderList"></ol>
+    </div>
 
-            <!-- Displays when time has run out or no more questions-->
-            <div id="gameOver">
-                <h1 id="gameOverNotification">Game Over!</h1>
-                <h2 id="yourScore"></h2>
+    <script src = "script.js"></script>
 
-                <!-- Captures gamers initials -->
-                <form class="userInfo" method="post">
-                    <label for="initials">Enter your initials:</label>
-                    <input type="text" name="userInitials" id="userInitials" placeholder="initials here">
-                </form>
-                <div id="invalidResponse"></div>
-                <p id="finalScore"></p>
-                <button type="button" id="postScore">Post score</button>
-            </div>
-
-            <!-- Posts gamer to leaderboard and gives opportunity to play again -->
-            <div id="leaderBoard">
-                <h1 id="theLeaders">The current leaders</h1>
-                <div>
-                    <ol id="leaderList"></ol>
-                </div>
-                <div>
-                    <button type="button" id="startOver">Play Again</button>
-                </div>
-            </div>
-
-            <div id="theTimer">
-                <h4>Time remaining: <span id="timeRemaining"></span></h4>
-            </div>
-        </section>
-</div>
 </body>
-
-<script src="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-    crossorigin="anonymous"></script>
-
 
 </html>
